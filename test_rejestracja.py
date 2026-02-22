@@ -25,6 +25,7 @@ class RegisterNewUserTest(unittest.TestCase):
         self.driver.find_element(By.ID, "email_create").send_keys(TestData.EMAIL)
         # 3. Kliknij "Create an account"
         self.driver.find_element(By.ID, "SubmitCreate").click()
+        self.driver.implicitly_wait(5)
         # 4. Kliknij swoją płeć
         if TestData.GENDER == Gender.FEMALE:
             # Kliknij Mrs
@@ -32,6 +33,7 @@ class RegisterNewUserTest(unittest.TestCase):
         else:
             # Kliknij Mr
             self.driver.find_element(By.XPATH, '//label[@for="id_gender1"]').click()
+            sleep(2)
 
     def tearDown(self):
         self.driver.quit()
